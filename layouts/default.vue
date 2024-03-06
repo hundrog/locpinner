@@ -2,7 +2,7 @@
 
 <template>
   <nav-bar />
-  <div class="mx-auto mt-12 container">
+  <div class="mx-auto mt-2 lg:mt-12 container">
     <slot />
   </div>
 </template>
