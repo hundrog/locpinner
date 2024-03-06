@@ -1,10 +1,16 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const supabase = useSupabaseClient()
+const signOut = async () => {
+  const { error } = await supabase.auth.signOut()
+  if (!error) { return navigateTo('/login') }
+}
+</script>
 
 <template>
   <div class="bg-base-100 navbar">
     <div class="flex-1">
       <NuxtLink class="text-xl btn btn-ghost" to="/">
-        <planet-logo class="w-6 h-6"/>
+        <planet-logo class="w-6 h-6" />
         LocPinner
       </NuxtLink>
     </div>
@@ -27,7 +33,7 @@
             </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <li><button @click.prevent="signOut()">Logout</button></li>
         </ul>
       </div>
     </div>
