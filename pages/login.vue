@@ -5,9 +5,9 @@ definePageMeta({
 </script>
 
 <template>
-  <h1 class="my-4 text-7xl">Login Now</h1>
   <div class="bg-base-100 shadow-2xl w-full max-w-sm card shrink-0">
     <div class="card-body">
+      <h2 class="justify-center card-title"><planet-logo class="w-40 h-40"/></h2>
       <form class="space-y-2">
         <div class="form-control">
           <label class="label">
@@ -21,9 +21,9 @@ definePageMeta({
       </form>
       <div class="divider">or</div>
       <div class="space-y-2">
-        <button class="btn-block btn btn-facebook">Login with Facebook</button>
+        <button class="btn-block btn btn-facebook">Sign with Facebook</button>
         <button class="btn-block btn btn-google">
-          <google-logo />
+          <google-logo class="w-6 h-6"/>
           Sign in with Google
         </button>
       </div>
