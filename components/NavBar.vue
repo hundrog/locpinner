@@ -18,13 +18,8 @@ const signOut = async () => {
       <div class="form-control">
         <input type="text" placeholder="Search" class="input-bordered w-24 md:w-auto input" />
       </div>
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
-          <div class="rounded-full w-10">
-            <img alt="Tailwind CSS Navbar component"
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
-        </div>
+      <div class="mr-2 dropdown dropdown-end">
+        <Avatar />
         <ul tabindex="0" class="z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
           <li>
             <a class="justify-between">
