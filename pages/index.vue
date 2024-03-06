@@ -2,14 +2,9 @@
 
 <template>
   <div class="flex justify-end mb-8">
-    <button class="btn btn-accent btn-circle">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-        class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-      </svg>
-    </button>
+    <NewPlaceModal />
   </div>
-  <div class="space-y-4">
+  <div class="space-y-4 px-2">
     <div class="card lg:card-side bg-base-100 shadow-lg" v-for="index in 100" :key="index">
       <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
       <div class="card-body">
