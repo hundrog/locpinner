@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
 const email = ref("")
-const message = ref("")
+const loading = ref(false)
 const alert = Alert()
 
 const signInWithProvider = async (provider: any) => {
   try {
+    loading.value = true
     const { error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
@@ -19,11 +20,14 @@ const signInWithProvider = async (provider: any) => {
       'error',
       'Please review your login details and try again'
     )
+  } finally {
+    loading.value = false
   }
 }
 
 const signInWithEmail = async () => {
   try {
+    loading.value = true
     const { error } = await supabase.auth.signInWithOtp({
     email: email.value,
     options: {
@@ -37,6 +41,8 @@ const signInWithEmail = async () => {
       'error',
       'Please review your login details and try again'
     )
+  } finally {
+    loading.value = false
   }
 }
 
@@ -57,7 +63,10 @@ definePageMeta({
           <input type="email" placeholder="email" class="input-bordered input" required v-model="email" />
         </div>
         <div class="form-control">
-          <button class="text-base-100 btn btn-primary" @click.prevent="signInWithEmail()">Login with email</button>
+          <button class="text-base-100 btn btn-primary" :class="{'btn-disabled': loading}" @click.prevent="signInWithEmail()">
+            <span class="loading loading-spinner" v-if="loading"></span>
+            <span v-else>Login with email</span>
+          </button>
         </div>
       </form>
       <div class="divider">or</div>
@@ -68,11 +77,6 @@ definePageMeta({
           Sign in with Google
         </button>
       </div>
-    </div>
-  </div>
-  <div class="toast" v-if="message">
-    <div class="alert alert-error">
-      <span>{{ message }}</span>
     </div>
   </div>
 </template>
