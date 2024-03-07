@@ -8,16 +8,38 @@ import {
 } from '@headlessui/vue'
 
 const isOpen = ref(false)
+const name = ref("")
+const coords = ref()
 
 function closeModal() {
   isOpen.value = false
 }
 function openModal() {
   isOpen.value = true
+  geolocate()
 }
-function submitPlace() {
-  console.log("Saving Place")
+async function submitPlace() {
   isOpen.value = false
+  const { latitude, longitude } = coords.value
+  const { data, error, status } = await $fetch('/api/locate', {
+    method: 'post',
+    body: {
+      name: name.value,
+      latitude,
+      longitude,
+    }
+  })
+  console.log(status)
+}
+
+function geolocate() {
+  if (!navigator.geolocation) {
+    console.log("Geolocation is not supported in this browser.")
+  } else {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      coords.value = position.coords
+    });
+  }
 }
 </script>
 
@@ -43,26 +65,26 @@ function submitPlace() {
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <DialogPanel class="bg-base-100 shadow-xl w-full max-w-lg card">
-              <div class="card-body">
+              <form class="card-body" @submit.prevent="submitPlace">
                 <DialogTitle as="h3" class="card-title">
                   Add a Place
                 </DialogTitle>
                 <div class="space-y-2 mt-2">
                   <label class="flex items-center gap-2 input-bordered input">
                     Name
-                    <input type="text" class="grow" placeholder="Bakery" />
+                    <input type="text" class="grow" placeholder="Bakery" v-model="name" required />
                   </label>
                 </div>
 
                 <div class="justify-end mt-2 card-actions">
-                  <button type="button" class="text-white btn btn-primary" @click="submitPlace">
+                  <button type="submit" class="text-white btn btn-primary">
                     Save
                   </button>
-                  <button type="button" class="btn btn-secondary" @click="closeModal">
+                  <a class="btn btn-secondary" @click="closeModal">
                     Close
-                  </button>
+                  </a>
                 </div>
-              </div>
+              </form>
             </DialogPanel>
           </TransitionChild>
         </div>
