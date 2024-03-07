@@ -13,12 +13,14 @@
     "@headlessui/vue": "^1.7.19",
     "@nuxt/image": "^1.4.0",
     "nuxt": "^3.10.3",
+    "pinia": "^2.1.7",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^1.1.6",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@pinia/nuxt": "^0.5.1",
     "daisyui": "^4.7.2"
   }
 }

@@ -2,10 +2,7 @@
 const supabase = useSupabaseClient()
 const email = ref("")
 const message = ref("")
-const alert = () => {
-  message.value = "Please review your login details and try again"
-  setTimeout(()=> message.value = "", 1500)
-}
+const alert = Alert()
 
 const signInWithProvider = async (provider: any) => {
   try {
@@ -18,7 +15,10 @@ const signInWithProvider = async (provider: any) => {
   if (error) throw (error)
 
   } catch (error) {
-    alert()
+    alert().create(
+      'error',
+      'Please review your login details and try again'
+    )
   }
 }
 
@@ -33,7 +33,10 @@ const signInWithEmail = async () => {
   if (error) throw (error)
 
   } catch (error) {
-    alert()
+    alert().create(
+      'error',
+      'Please review your login details and try again'
+    )
   }
 }
 
