@@ -18,7 +18,7 @@ const { data: places, error } = await supabase
         <h2 class="card-title">{{ place.name }}</h2>
         <p>{{ place.address }}</p>
         <div class="justify-end card-actions">
-          <button class="btn btn-primary">Listen</button>
+          <NuxtLink class="btn btn-primary" :to="`/places/${place.id}`">Details</NuxtLink>
         </div>
       </div>
     </div>

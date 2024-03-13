@@ -8,20 +8,20 @@ export default defineEventHandler(async (event) => {
 
 async function getImage(event: H3Event<EventHandlerRequest>) {
   const config = useRuntimeConfig(event)
-  const query = getQuery(event)
+  const {lon, lat, height, width, zoom, scale} = getQuery(event)
 
   let map: any
-  const center = `lonlat:${query.lon},${query.lat}`
+  const center = `lonlat:${lon},${lat}`
 
   await $fetch('https://maps.geoapify.com/v1/staticmap', {
       query: {
       style: 'osm-bright-smooth',
-      width: '400',
-      height: '400',
+      width: width,
+      height: height,
       center: center,
-      zoom: '15',
+      zoom: zoom,
       marker: `${center};type:material;color:red;size:small;icon:wifi;icontype:awesome;iconsize:small`,
-      scaleFactor: '2',
+      scaleFactor: scale,
       apiKey: config.geoapifyToken,
     },
     async onResponse({ request, response, options }) {
