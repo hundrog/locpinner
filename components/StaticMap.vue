@@ -41,29 +41,34 @@ const props = defineProps({
   rounded: { type: Boolean, default: true },
 })
 
-onMounted(async () => {
-  const { width, height, zoom, scale } = queryBysize[props.size as Size];
-  await $fetch('/api/image', {
-    query: {
-      lon: props.lon,
-      lat: props.lat,
-      width,
-      height,
-      zoom,
-      scale,
-    },
-    async onResponse({ response }) {
-      uri.value = URL.createObjectURL(response._data)
-    }
-  })
-})
+// onMounted(async () => {
+watch(props, async () => {
+  if (props.lon) {
+    const { width, height, zoom, scale } = queryBysize[props.size as Size];
+    await $fetch('/api/image', {
+      query: {
+        lon: props.lon,
+        lat: props.lat,
+        width,
+        height,
+        zoom,
+        scale,
+      },
+      async onResponse({ response }) {
+        uri.value = URL.createObjectURL(response._data)
+      }
+    })
+  }
+}, { immediate: true })
+// })
 </script>
 
 <template>
-  <div class="rounded-t-xl lg:rounded-none lg:rounded-l-xl w-96 h-96" :class="{ skeleton: loading }" v-if="size === 'default'">
-    <NuxtImg :src="uri" @load="loading = false" v-if="uri" class="w-full h-full"/>
+  <div class="rounded-t-xl lg:rounded-none lg:rounded-l-xl w-96 h-96" :class="{ skeleton: loading }"
+    v-if="size === 'default'">
+    <NuxtImg :src="uri" @load="loading = false" v-if="uri" class="w-full h-full" />
   </div>
-  <div class="rounded-none w-[640px] h-[640px]" :class="{ skeleton: loading }" v-else>
-    <NuxtImg :src="uri" @load="loading = false" v-if="uri" class="w-full h-full"/>
+  <div class="rounded-none w-96 lg:w-[640px] h-96 lg:h-[640px]" :class="{ skeleton: loading }" v-else>
+    <NuxtImg :src="uri" @load="loading = false" v-if="uri" class="w-full h-full" />
   </div>
 </template>
