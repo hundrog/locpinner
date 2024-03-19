@@ -3,7 +3,7 @@ const route = useRoute()
 const props = defineProps(['item'])
 
 const editing = ref(false)
-const name = ref('')
+const name = ref(props.item.name)
 
 async function updateName() {
   const supabase = useSupabaseClient()

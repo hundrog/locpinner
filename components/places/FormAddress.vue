@@ -4,7 +4,7 @@ const route = useRoute()
 const props = defineProps(['item'])
 
 const editing = ref(false)
-const address = ref('')
+const address = ref(props.item.address)
 
 async function updateAddress() {
   props.item.address = address.value
