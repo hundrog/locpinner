@@ -13,7 +13,7 @@ watch(props, async () => {
     const { data, error } = await supabase
     .storage
     .from('maps')
-    .createSignedUrl(props.mapUri || '', 3600)
+    .createSignedUrl(props.mapUri || '', 3600, { download: false })
 
     if(error) { throw error }
 

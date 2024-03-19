@@ -16,18 +16,18 @@ const signOut = async () => {
     </div>
     <div class="flex-none gap-2">
       <div class="form-control">
-        <input type="text" placeholder="Search" class="input-bordered w-24 md:w-auto input" />
+        <!-- <input type="text" placeholder="Search" class="input-bordered w-24 md:w-auto input" /> -->
       </div>
       <div class="mr-2 dropdown dropdown-end">
         <Avatar />
         <ul tabindex="0" class="z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
           <li>
-            <a class="justify-between">
+            <a class="justify-between text-neutral-content">
               Profile
-              <span class="badge">New</span>
+              <!-- <span class="badge">New</span> -->
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><a class="text-neutral-content">Settings</a></li>
           <li><button @click.prevent="signOut()">Logout</button></li>
         </ul>
       </div>
