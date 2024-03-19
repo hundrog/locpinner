@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const supabase = useSupabaseClient()
 const route = useRoute()
 const props = defineProps(['item'])
 
@@ -7,13 +6,14 @@ const editing = ref(false)
 const name = ref('')
 
 async function updateName() {
-  const { data, error } = await supabase
+  const supabase = useSupabaseClient()
+  const { error } = await supabase
     .from('places')
-    .update({name: name.value})
+    .update({ name: name.value })
     .eq('id', route.params.id)
-    .select()
 
   if (!error) {
+    props.item.name = name.value
     editing.value = false
   }
 }
@@ -30,7 +30,7 @@ async function updateName() {
   </form>
   <div class="flex" v-else>
     <div class="grow">
-      <h2 class="card-title">{{ item?.name }}</h2>
+      <h2 class="card-title" ref="el">{{ item?.name }}</h2>
     </div>
     <div class="">
       <PlacesEditButton @click="editing = true" />

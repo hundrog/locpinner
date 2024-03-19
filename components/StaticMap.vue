@@ -23,7 +23,7 @@ watch(props, async () => {
 </script>
 
 <template>
-  <div class="rounded-t-xl lg:rounded-none lg:rounded-l-xl w-96 h-96" :class="{ skeleton: loading }" v-if="size == 'default'">
+  <div class="rounded-t-xl lg:rounded-none lg:rounded-l-xl w-96 h-auto" :class="{ skeleton: loading }" v-if="size == 'default'">
     <NuxtImg :src="uri" @load="loading = false" class="w-full h-full" v-if="uri" />
   </div>
   <div class="rounded-t-xl lg:rounded-none lg:rounded-l-xl w-96 lg:w-[640px] h-96 lg:h-[640px]" :class="{ skeleton: loading }" v-else-if="size == 'large'">

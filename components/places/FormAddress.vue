@@ -7,13 +7,14 @@ const editing = ref(false)
 const address = ref('')
 
 async function updateAddress() {
-  const { data, error } = await supabase
+  props.item.address = address.value
+  const { error } = await supabase
     .from('places')
-    .update({address: address.value})
+    .update({ address: address.value })
     .eq('id', route.params.id)
-    .select()
 
   if (!error) {
+    props.item.address = address.value
     editing.value = false
   }
 }

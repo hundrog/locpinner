@@ -11,7 +11,7 @@ const { data: places, error } = await supabase
   <div class="flex justify-end mb-8">
     <NewPlaceModal />
   </div>
-  <div class="gap-4 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mx-2 md:mx-0">
+  <div class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-2 md:mx-0">
     <div class="card lg:card-side bg-base-100 shadow-lg image-full" v-for="place in places" :key="place.id">
       <figure><StaticMap :map-uri="place.map_url" /></figure>
       <div class="card-body">
