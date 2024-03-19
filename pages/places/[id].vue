@@ -10,8 +10,8 @@ const { data: places, error } = await supabase
 
 <template>
   <div v-for="place in places" :key="place.id" class="container">
-    <div class="card lg:card-side bg-base-100 shadow-lg">
-      <figure><StaticMap :map-uri="place.map_url" /></figure>
+    <div class="card lg:card-side bg-base-100 shadow-lg mx-2 md:mx-0">
+      <figure><StaticMap :map-uri="place.map_url" size="large"/></figure>
       <div class="card-body">
         <PlacesFormName :item="place" />
         <p><PlacesFormAddress :item="place" /></p>
