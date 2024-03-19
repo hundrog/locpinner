@@ -4,16 +4,14 @@ const route = useRoute()
 
 const { data: places, error } = await supabase
   .from('places')
-  .select('id, name, address, lat, lon')
+  .select('id, name, address, lat, lon, map_url')
   .eq('id', route.params.id)
 </script>
 
 <template>
   <div v-for="place in places" :key="place.id" class="container">
     <div class="card lg:card-side bg-base-100 shadow-lg">
-      <figure>
-        <StaticMap :lon="place.lon" :lat="place.lat" size="large" />
-      </figure>
+      <figure><StaticMap :map-uri="place.map_url" /></figure>
       <div class="card-body">
         <PlacesFormName :item="place" />
         <p><PlacesFormAddress :item="place" /></p>

@@ -1,4 +1,5 @@
 import type { H3Event, EventHandlerRequest } from 'h3'
+import { serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
   const map = await getImage(event)

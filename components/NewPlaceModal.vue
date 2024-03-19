@@ -21,7 +21,7 @@ function openModal() {
 async function submitPlace() {
   isOpen.value = false
   const { latitude, longitude } = coords.value
-  const { data, error, status } = await $fetch('/api/locate', {
+  const response = await $fetch('/api/locate', {
     method: 'post',
     body: {
       name: name.value,
@@ -29,7 +29,7 @@ async function submitPlace() {
       longitude,
     }
   })
-  console.log(status)
+  console.log(response)
 }
 
 function geolocate() {

@@ -13,7 +13,7 @@ const { data: places, error } = await supabase
   </div>
   <div class="space-y-4 px-2">
     <div class="card lg:card-side bg-base-100 shadow-lg" v-for="place in places" :key="place.id">
-      <figure><StaticMap :lon="place.lon" :lat="place.lat"/></figure>
+      <figure><StaticMap :map-uri="place.map_url" /></figure>
       <div class="card-body">
         <h2 class="card-title">{{ place.name }}</h2>
         <p>{{ place.address }}</p>
