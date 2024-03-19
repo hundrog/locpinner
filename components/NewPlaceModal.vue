@@ -7,6 +7,8 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 
+const placesStore = usePlaces()
+const alert = Alert()
 const isOpen = ref(false)
 const name = ref("")
 const coords = ref()
@@ -20,6 +22,7 @@ function openModal() {
 }
 async function submitPlace() {
   isOpen.value = false
+  placesStore().push({ name: name.value })
   const { latitude, longitude } = coords.value
   const response = await $fetch('/api/locate', {
     method: 'post',
@@ -29,7 +32,14 @@ async function submitPlace() {
       longitude,
     }
   })
-  console.log(response)
+
+  if(response.error){
+    placesStore().pop()
+    alert().create(
+      'error',
+      response.error.message
+    )
+  }
 }
 
 function geolocate() {
@@ -93,4 +103,5 @@ function geolocate() {
   </TransitionRoot>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

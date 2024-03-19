@@ -12,8 +12,11 @@ watch(message, () => {
 </script>
 
 <template>
-  <div class="toast" v-if="message">
-    <div :class="alertClass">
+  <div class="z-50 toast" v-if="message">
+    <div class="alert alert-error" v-if="status == 'error'">
+      <span>{{ message }}</span>
+    </div>
+    <div class="alert alert-success" v-else-if="status == 'success'">
       <span>{{ message }}</span>
     </div>
   </div>

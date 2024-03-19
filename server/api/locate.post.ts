@@ -87,13 +87,11 @@ async function savePlace(supabase: any, geocodeResponse: Ref<any>, body: any, us
     })
     .select()
 
-    console.log(response)
-
   if (response.error) { throw response.error }
 
   return { response }
   } catch (error) {
     console.error("Error while saving place:", error);
-    throw error;
+    return { error };
   }
 }

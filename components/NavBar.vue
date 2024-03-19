@@ -20,7 +20,7 @@ const signOut = async () => {
       </div>
       <div class="mr-2 dropdown dropdown-end">
         <Avatar />
-        <ul tabindex="0" class="z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
+        <ul tabindex="0" class="z-20 bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
           <li>
             <a class="justify-between text-neutral-content">
               Profile
