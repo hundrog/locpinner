@@ -1,3 +1,4 @@
+import type { Place } from '~/types/place'
 export const usePlaces = () => defineStore('placesStore', () => {
     const places = ref()
 
@@ -13,7 +14,7 @@ export const usePlaces = () => defineStore('placesStore', () => {
         }
     }
 
-    function push(place: any) {
+    function push(place: Place) {
         places.value.push(place)
     }
 
@@ -21,9 +22,13 @@ export const usePlaces = () => defineStore('placesStore', () => {
         places.value.pop()
     }
 
-    function replaceLast(place: any) {
+    function replaceLast(place: Place) {
         places.value.splice(places.value.length -1, 1, place)
     }
 
-    return { places, fetch, push, pop, replaceLast }
+    function set(items: Place[]) {
+        places.value = items
+    }
+
+    return { places, fetch, push, pop, set, replaceLast }
 })
