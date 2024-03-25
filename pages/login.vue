@@ -6,9 +6,7 @@ const alert = Alert()
 const runtimeConfig = useRuntimeConfig()
 
 const retirectUrl = computed(()=>{
-  const protocol = (runtimeConfig.public.env === "development") ? 'http' : 'https'
-
-  return `${protocol}://${runtimeConfig.public.baseUrl}/confirm`
+  return `${runtimeConfig.public.baseUrl}/confirm`
 })
 
 const signInWithProvider = async (provider: any) => {

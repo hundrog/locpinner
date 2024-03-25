@@ -1,4 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { themeChange } from 'theme-change'
+onMounted(() => {
+  themeChange(false)
+})
+</script>
 
 <template>
   <nav-bar />
