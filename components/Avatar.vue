@@ -6,7 +6,7 @@ const { data: { session }, error } = await supabase.auth.getSession()
 const avatarUrl = computed(() => {
   switch (session?.user.app_metadata.provider) {
     case "facebook":
-      return `http://graph.facebook.com/${session?.user.user_metadata.sub}/picture?type=large&redirect=true&width=500&height=500`
+      return `https://graph.facebook.com/${session?.user.user_metadata.sub}/picture?type=large&redirect=true&width=500&height=500`
 
     case "google":
       return session?.user.user_metadata.avatar_url
