@@ -15,7 +15,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     geoapifyToken: '',
     public: {
-      baseUrl: ''
+      baseUrl: '',
+      environment: ''
+    }
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/'],
     }
   }
 })

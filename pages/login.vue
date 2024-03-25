@@ -5,8 +5,8 @@ const loading = ref(false)
 const alert = Alert()
 const runtimeConfig = useRuntimeConfig()
 
-const retirectUrl = computed(()=>{
-  const protocol = (process.env.NUXT_ENV_VERCEL_ENV === 'development') ? 'http://' : 'https://'
+const redirectUrl = computed(()=>{
+  const protocol = (runtimeConfig.public.environment === 'development') ? 'http://' : 'https://'
 
   return `${protocol}${runtimeConfig.public.baseUrl}/confirm`
 })
@@ -17,7 +17,7 @@ const signInWithProvider = async (provider: any) => {
     const { error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
-      redirectTo: retirectUrl.value
+      redirectTo: redirectUrl.value
     }
   })
   if (error) throw (error)
@@ -38,7 +38,7 @@ const signInWithEmail = async () => {
     const { error } = await supabase.auth.signInWithOtp({
     email: email.value,
     options: {
-      emailRedirectTo: retirectUrl.value
+      emailRedirectTo: redirectUrl.value
     }
   })
   if (error) throw (error)
