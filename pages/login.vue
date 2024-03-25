@@ -5,12 +5,10 @@ const loading = ref(false)
 const alert = Alert()
 const runtimeConfig = useRuntimeConfig()
 
-console.log(runtimeConfig.envVercelUrl)
-
 const retirectUrl = computed(()=>{
-  const protocol = (runtimeConfig.envVercelEnv === 'development') ? 'http' : 'https'
+  const protocol = (process.env.NUXT_ENV_VERCEL_ENV === 'development') ? 'http://' : 'https://'
 
-  return `${protocol}://${runtimeConfig.envVercelUrl}/confirm`
+  return `${protocol}${runtimeConfig.public.baseUrl}/confirm`
 })
 
 const signInWithProvider = async (provider: any) => {
