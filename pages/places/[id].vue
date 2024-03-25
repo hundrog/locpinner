@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Place } from '~/types/place'
-const supabase = useSupabaseClient()
+import type { Database, Tables } from '~/types/supabase'
+const supabase = useSupabaseClient<Database>()
 const route = useRoute()
 const placesStore = usePlaces()
 
@@ -17,7 +17,7 @@ async function deletePlace(placeId: string) {
 
   if (!error) {
     placesStore().set(
-      placesStore().places.filter((p: Place) => {
+      placesStore().places.filter((p: Tables<'places'>) => {
         p.id != route.params.id
       })
     )
@@ -39,7 +39,7 @@ async function deletePlace(placeId: string) {
         </p>
         <div class="justify-end card-actions">
           <button class="btn btn-warning" @click.prevent="deletePlace(place.id)">Delete</button>
-          <NuxtLink class="btn btn-primary" to="/">Back</NuxtLink>
+          <NuxtLink class="btn btn-primary" to="/places">Back</NuxtLink>
         </div>
       </div>
     </div>
