@@ -13,6 +13,10 @@ export default defineNuxtConfig({
     "@nuxt/image"
   ],
   runtimeConfig: {
-    geoapifyToken: ''
+    geoapifyToken: '',
+    public:{
+      baseUrl: process.env.NUXT_ENV_VERCEL_URL,
+      env: process.env.NUXT_ENV_VERCEL_ENV
+    }
   }
 })

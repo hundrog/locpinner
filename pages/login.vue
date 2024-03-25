@@ -3,6 +3,13 @@ const supabase = useSupabaseClient()
 const email = ref("")
 const loading = ref(false)
 const alert = Alert()
+const runtimeConfig = useRuntimeConfig()
+
+const retirectUrl = computed(()=>{
+  const protocol = (runtimeConfig.public.env === "development") ? 'http' : 'https'
+
+  return `${protocol}://${runtimeConfig.public.baseUrl}/confirm`
+})
 
 const signInWithProvider = async (provider: any) => {
   try {
@@ -10,7 +17,7 @@ const signInWithProvider = async (provider: any) => {
     const { error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
-      redirectTo: 'http://localhost:3000/confirm'
+      redirectTo: retirectUrl.value
     }
   })
   if (error) throw (error)
@@ -31,7 +38,7 @@ const signInWithEmail = async () => {
     const { error } = await supabase.auth.signInWithOtp({
     email: email.value,
     options: {
-      emailRedirectTo: 'http://localhost:3000/confirm'
+      emailRedirectTo: retirectUrl.value
     }
   })
   if (error) throw (error)
