@@ -5,8 +5,12 @@ const loading = ref(false)
 const alert = Alert()
 const runtimeConfig = useRuntimeConfig()
 
+console.log(runtimeConfig.envVercelUrl)
+
 const retirectUrl = computed(()=>{
-  return `${runtimeConfig.public.baseUrl}/confirm`
+  const protocol = (runtimeConfig.envVercelEnv === 'development') ? 'http' : 'https'
+
+  return `${protocol}://${runtimeConfig.envVercelUrl}/confirm`
 })
 
 const signInWithProvider = async (provider: any) => {

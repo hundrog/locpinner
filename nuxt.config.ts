@@ -14,8 +14,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     geoapifyToken: '',
-    public:{
-      baseUrl: ''
-    }
+    envVercelUrl: '',
+    envVercelEnv: '',
   }
 })
