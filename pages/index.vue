@@ -25,14 +25,12 @@ supabase
 
 <template>
   <div class="mb-12 min-h-svh hero scroll-smooth"
-    style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+    style="background-image: url(https://images.unsplash.com/36/xIsiRLngSRWN02yA2BbK_submission-photo-7.jpg);">
     <div class="bg-opacity-60 hero-overlay"></div>
     <div class="text-center text-neutral-content hero-content">
       <div class="max-w-md">
-        <h1 class="mb-5 font-bold text-5xl">Hello there</h1>
-        <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-          In deleniti eaque aut repudiandae et a id nisi.</p>
-          <NuxtLink class="mb-36 btn btn-primary" to="/places">Start for free</NuxtLink>
+        <h1 class="mb-5 font-bold text-5xl">Meet the modern Address Book</h1>
+          <NuxtLink class="mt-8 mb-36 btn btn-primary" to="/places">Start for free</NuxtLink>
         <div class="flex justify-center">
           <div class="tooltip-right tooltip" data-tip="Learn More">
           <button @click="scrollToElement">
