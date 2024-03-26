@@ -10,7 +10,7 @@ const signOut = async () => {
 <template>
   <div class="bg-base-100 navbar">
     <div class="flex-1">
-      <NuxtLink class="text-xl btn btn-ghost" to="/">
+      <NuxtLink class="text-xl btn btn-ghost" :to="user ? '/places' : '/'">
         <planet-logo class="w-6 h-6" />
         LocPinner
       </NuxtLink>
@@ -38,7 +38,7 @@ const signOut = async () => {
           <li><button @click.prevent="signOut()">Logout</button></li>
         </ul>
       </div>
-      <div class="navbar-end">
+      <div class="navbar-end" v-else>
         <NuxtLink to="/login" class="btn">Login</NuxtLink>
       </div>
     </div>
