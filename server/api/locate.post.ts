@@ -89,9 +89,9 @@ async function savePlace(supabase: any, geocodeResponse: Ref<any>, body: any, us
 
   if (response.error) { throw response.error }
 
-  return { response }
+  return { response: response, error: null }
   } catch (error) {
     console.error("Error while saving place:", error);
-    return { error };
+    return { response: null, error: error };
   }
 }

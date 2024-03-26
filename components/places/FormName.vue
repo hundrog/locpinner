@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Database } from '~/types/supabase'
 const route = useRoute()
 const props = defineProps(['item'])
 
@@ -6,7 +7,7 @@ const editing = ref(false)
 const name = ref(props.item.name)
 
 async function updateName() {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient<Database>()
   const { error } = await supabase
     .from('places')
     .update({ name: name.value })

@@ -22,9 +22,19 @@ function openModal() {
 }
 async function submitPlace() {
   isOpen.value = false
-  placesStore().push({ name: name.value })
+  placesStore().push({
+    name: name.value,
+    address: '',
+    created_at: '',
+    data: '{}',
+    id: '',
+    lat: '',
+    lon: '',
+    map_url: '',
+    user_id: null
+  })
   const { latitude, longitude } = coords.value
-  const response = await $fetch('/api/locate', {
+  const { error } = await useFetch('/api/locate', {
     method: 'post',
     body: {
       name: name.value,
@@ -33,11 +43,11 @@ async function submitPlace() {
     }
   })
 
-  if(response.error){
+  if(error){
     placesStore().pop()
     alert().create(
       'error',
-      response.error.message
+      error.value?.message || ''
     )
   }
 }
