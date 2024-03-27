@@ -2,11 +2,11 @@
 import type { Database, Tables } from '~/types/supabase'
 const supabase = useSupabaseClient<Database>()
 const route = useRoute()
-const placesStore = usePlaces()
+const placesStore = usePlacesStore()
 
 const { data: places, error } = await supabase
   .from('places')
-  .select('id, name, address, lat, lon, map_url')
+  .select('id, name, address, lat, lon, map_url, category')
   .eq('id', route.params.id)
 
 async function deletePlace(placeId: string) {
@@ -36,6 +36,7 @@ async function deletePlace(placeId: string) {
         <PlacesFormName :item="place" />
         <p>
           <PlacesFormAddress :item="place" />
+          <PlacesFormCategory :item="place" />
         </p>
         <div class="justify-end card-actions">
           <button class="btn btn-warning" @click.prevent="deletePlace(place.id)">Delete</button>

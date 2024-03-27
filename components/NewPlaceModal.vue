@@ -9,7 +9,7 @@ import {
 
 import type { ApiResponse } from '~/types/placesApi'
 
-const placesStore = usePlaces()
+const placesStore = usePlacesStore()
 const alert = Alert()
 const isOpen = ref(false)
 const name = ref("")
@@ -33,6 +33,7 @@ async function submitPlace() {
     lat: '',
     lon: '',
     map_url: '',
+    category: 'person',
     user_id: null
   })
   const { latitude, longitude } = coords.value

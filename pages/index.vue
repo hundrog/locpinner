@@ -1,6 +1,6 @@
 <script setup>
 const supabase = useSupabaseClient()
-const placesStore = usePlaces()
+const placesStore = usePlacesStore()
 
 onMounted(async () => {
   await placesStore().fetch()

@@ -12,6 +12,7 @@ export type Database = {
       places: {
         Row: {
           address: string
+          category: Database["public"]["Enums"]["category"]
           created_at: string
           data: Json
           id: string
@@ -23,6 +24,7 @@ export type Database = {
         }
         Insert: {
           address?: string
+          category?: Database["public"]["Enums"]["category"]
           created_at?: string
           data?: Json
           id?: string
@@ -34,6 +36,7 @@ export type Database = {
         }
         Update: {
           address?: string
+          category?: Database["public"]["Enums"]["category"]
           created_at?: string
           data?: Json
           id?: string
@@ -99,7 +102,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      category: "person" | "store"
     }
     CompositeTypes: {
       [_ in never]: never
