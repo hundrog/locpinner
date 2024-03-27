@@ -7,6 +7,8 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 
+import type { ApiResponse } from '~/types/placesApi'
+
 const placesStore = usePlaces()
 const alert = Alert()
 const isOpen = ref(false)
@@ -34,20 +36,20 @@ async function submitPlace() {
     user_id: null
   })
   const { latitude, longitude } = coords.value
-  const { error } = await useFetch('/api/locate', {
+  const { error } = await $fetch('/api/createPlace', {
     method: 'post',
     body: {
       name: name.value,
       latitude,
       longitude,
     }
-  })
+  }) as ApiResponse
 
-  if(error){
+  if (error) {
     placesStore().pop()
     alert().create(
       'error',
-      error.value?.message || ''
+      error.message || ''
     )
   }
 }

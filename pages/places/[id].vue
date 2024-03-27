@@ -21,7 +21,7 @@ async function deletePlace(placeId: string) {
         p.id != route.params.id
       })
     )
-    return navigateTo('/')
+    return navigateTo('/places')
   }
 }
 </script>
