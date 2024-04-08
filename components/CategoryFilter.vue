@@ -26,8 +26,10 @@ function setCategory(category: Enums<'category'>) {
       </svg>
     </div>
     <ul tabindex="0" class="z-20 bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
-      <li v-for="category in categories" :key="category.key"><a @click="setCategory(category.key)">{{ category.val
-          }}</a>
+      <li v-for="category in categories" :key="category.key">
+        <a @click="setCategory(category.key)" :class="{ active: placesStore().category == category.key }">
+          {{ category.val }}
+        </a>
       </li>
     </ul>
   </div>

@@ -16,7 +16,6 @@ supabase
   .subscribe()
 
 function cetegorize(category) {
-  console.log(category)
   filteredPlaces.value = category === 'all' ? placesStore().places : placesStore().places.filter((place) => place.category === category)
 }
 
@@ -51,4 +50,5 @@ watch(() => placesStore().category, (newCategory, oldCategory) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
