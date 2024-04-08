@@ -1,7 +1,7 @@
 import type { Database, Tables } from '~/types/supabase'
 export const usePlacesStore = () => defineStore('places', () => {
     const places = ref()
-    const category = ref()
+    const category = ref('all')
 
     async function fetch() {
         const supabase = useSupabaseClient<Database>()
