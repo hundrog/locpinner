@@ -100,7 +100,7 @@ function geolocate() {
                 </div>
 
                 <div class="justify-end mt-2 card-actions">
-                  <button type="submit" class="text-white btn btn-primary">
+                  <button type="submit" class="btn btn-primary">
                     Save
                   </button>
                   <a class="btn btn-secondary" @click="closeModal">
@@ -116,5 +116,4 @@ function geolocate() {
   </TransitionRoot>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

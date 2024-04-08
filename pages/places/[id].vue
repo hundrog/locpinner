@@ -39,7 +39,7 @@ async function deletePlace(placeId: string) {
             <div tabindex="0" role="button" class="btn btn-ghost m-1 btn-circle">
               <EllipsisVerticalIcon class="h-5 w-5" />
             </div>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
               <li><button @click.prevent="deletePlace(place.id)">Delete</button></li>
             </ul>
           </div>

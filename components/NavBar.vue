@@ -22,17 +22,19 @@ const signOut = async () => {
       <div class="mr-2 dropdown dropdown-end" v-if="user">
         <Avatar />
         <ul tabindex="0" class="z-20 bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
-          <li>
-            <a class="justify-between text-base-200">
+          <!-- 
+            <li>
+            <a class="justify-between text-base-100">
               Profile
-              <!-- <span class="badge">New</span> -->
             </a>
           </li>
-          <li><a class="text-base-200">Settings</a></li>
+          <li><a class="text-base-100">Settings</a></li>
+          -->
           <li>
             <label class="flex gap-2 cursor-pointer">
               <span class="label-text">Dark Mode</span>
-              <input type="checkbox" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" class="theme-controller toggle" value="dim"/>
+              <input type="checkbox" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"
+                class="theme-controller toggle" value="dim" />
             </label>
           </li>
           <li><button @click.prevent="signOut()">Logout</button></li>
