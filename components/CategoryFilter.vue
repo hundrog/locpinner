@@ -5,7 +5,7 @@ const placesStore = usePlacesStore()
 
 onMounted(() => {
   categories.value = [
-    { key: '', val: 'All' },
+    { key: 'all', val: 'All' },
     { key: 'person', val: 'Persons' },
     { key: 'store', val: 'Stores' },
   ]
@@ -26,11 +26,11 @@ function setCategory(category: Enums<'category'>) {
       </svg>
     </div>
     <ul tabindex="0" class="z-20 bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm">
-      <li v-for="category in categories" :key="category.key"><a @click="setCategory(category.key)">{{ category.val }}</a>
+      <li v-for="category in categories" :key="category.key"><a @click="setCategory(category.key)">{{ category.val
+          }}</a>
       </li>
     </ul>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
