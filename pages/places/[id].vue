@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import type { Database, Tables } from '~/types/supabase'
 const supabase = useSupabaseClient<Database>()
 const route = useRoute()
@@ -33,13 +34,22 @@ async function deletePlace(placeId: string) {
         <StaticMap :map-uri="place.map_url" size="large" />
       </figure>
       <div class="card-body">
+        <div class="flex justify-end mb-4">
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost m-1 btn-circle">
+              <EllipsisVerticalIcon class="h-5 w-5" />
+            </div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><button @click.prevent="deletePlace(place.id)">Delete</button></li>
+            </ul>
+          </div>
+        </div>
         <PlacesFormName :item="place" />
         <p>
           <PlacesFormAddress :item="place" />
           <PlacesFormCategory :item="place" />
         </p>
         <div class="justify-end card-actions">
-          <button class="btn btn-warning" @click.prevent="deletePlace(place.id)">Delete</button>
           <NuxtLink class="btn btn-primary" to="/places">Back</NuxtLink>
         </div>
       </div>
@@ -47,5 +57,4 @@ async function deletePlace(placeId: string) {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

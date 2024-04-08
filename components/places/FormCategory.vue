@@ -20,7 +20,6 @@ async function updateCategory() {
 
 import {
   Listbox,
-  ListboxLabel,
   ListboxButton,
   ListboxOptions,
   ListboxOption,
